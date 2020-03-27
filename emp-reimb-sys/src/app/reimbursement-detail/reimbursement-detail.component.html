@@ -1,0 +1,34 @@
+<div *ngIf="reimbValue">
+    <table style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Amount</th>
+        <th>Submitted</th>
+        <th>Resolved</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Resolver</th>
+        <th>Status</th>
+        <th>Type</th>
+    </tr>
+    <tr>
+        <td>{{reimb.id}}</td>
+        <td>{{reimb.amount}}</td>
+        <td>{{reimb.submitted | date}}</td>
+        <td *ngIf="resolved">{{reimb.resolved | date}}</td>
+        <td *ngIf="!resolved">N/A</td>
+        <td>{{reimb.description}}</td>
+        <td>{{reimb.author}}</td>
+        <td>{{reimb.resolver}}</td>
+        <td>{{reimb.status}}</td>
+        <td>{{reimb.type}}</td>
+    </tr>
+    </table>
+    <div *ngIf="reimb.receipt != null;">
+        <img src="{{reimb.receipt}}">
+    </div>
+    <div *ngIf="manager">
+        <button (click) = "approve()">Approve</button>
+        <button (click) = "deny()">Deny</button>
+    </div>
+</div>

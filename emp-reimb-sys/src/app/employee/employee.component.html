@@ -1,0 +1,51 @@
+<h2>Reimbursements</h2>
+
+<div *ngIf="employee">
+  <h3>New Reimbursement:</h3>
+  <form [formGroup]="reimbForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" class="form-control" name="amount" id="amount" formControlName="amount">
+    </div>
+     <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" name="description" id="description" formControlName="description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <select class="form-control" name="type" id="type" formControlName="type">
+        <option value="LODGING">Lodging</option>
+        <option value="TRAVEL">Travel</option>
+        <option value="FOOD">Food</option>
+        <option value="OTHER">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="receipt">Receipt</label>
+      <input type="file" class="form-control" name="receipt" id="receipt" formControlName="receipt" (change)="onFileChange($event)">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="manager">
+  <button (click)="getReimbs()">
+    All
+  </button>
+  <button (click)="getPending()">
+    Pending
+  </button>
+  <button (click)="getApproved()">
+    Approved
+  </button>
+  <button (click)="getDenied()">
+    Denied
+  </button>
+</div>
+<ul class="reimb">
+  <li *ngFor="let reimb of reimbs | async" class="reimb">
+    <a routerLink="/reimbursement/detail/{{reimb.id}}">
+      <span class="badge">{{reimb.status}}</span> ${{reimb.amount}} | {{reimb.type}} | {{reimb.submitted | date}}
+    </a> 
+  </li>
+</ul>
