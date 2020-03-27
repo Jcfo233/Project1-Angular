@@ -76,7 +76,7 @@ h1 {
   /* HeroDetailComponent's private CSS styles */
 label {
     display: inline-block;
-    width: 3em;
+    width: 8em;
     margin: .5em 0;
     color: #607D8B;
     font-weight: bold;
@@ -105,10 +105,10 @@ label {
     cursor: auto;
   }
 table{
-    background-color: rgb(39, 44, 80);
+    background-color: rgb(71, 5, 77);
     color: #707c83
 }
 td{
-    background-color: rgb(99, 177, 197);
+    background-color: rgb(233, 227, 139);
     color: #000000
 }
